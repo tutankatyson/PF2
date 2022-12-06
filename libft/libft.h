@@ -6,7 +6,7 @@
 /*   By: jorsanch <jorsanch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/22 20:18:56 by jorsanch          #+#    #+#             */
-/*   Updated: 2022/11/03 12:13:58 by jorsanch         ###   ########.fr       */
+/*   Updated: 2022/12/06 21:09:04 by jorsanch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,6 @@ void		ft_putendl_fd(char *s, int fd);
 void		ft_putnbr_fd(int n, int fd);
 
 int			ft_putnbrbase(unsigned long int n, char *base);
-char	*	ft_uitoa(unsigned int n);
+char	*	ft_uitoa(unsigned long int n);
 
 #endif

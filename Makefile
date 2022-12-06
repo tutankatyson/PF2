@@ -6,7 +6,7 @@
 #    By: jorsanch <jorsanch@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/30 18:15:47 by jorsanch          #+#    #+#              #
-#    Updated: 2022/12/06 20:56:03 by jorsanch         ###   ########.fr        #
+#    Updated: 2022/12/06 21:01:09 by jorsanch         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -39,13 +39,14 @@ fclean: clean
 
 re: fclean all
 
-
+# Esta regla compila todos los archivos .c, incluido main.c, y ejecuta el programa creado
 main:
 	gcc  $(FLAGS) *.c ./libft/*.c
 	@echo - - - - - TEST PROGRAM: - - - - -
 	@./a.out
 	@make clean
 
+# Esta regla hace stage, commit y push al directorio git de todos los archivos 
 push:
 	git add .
 	git status

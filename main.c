@@ -7,8 +7,8 @@ int main()
 	int i, j;
 	char *ptr = "holas";
 
-	i	=	ft_printf("\n 1%%%c",'X');
-	j	=      printf("\n 1%%%c",'X');
+	i	=	ft_printf("\n %u ", 4294967295);
+	j	=      printf("\n %lu ", 4294967295);
 
 	ptr = 0;
 	if(i != j)

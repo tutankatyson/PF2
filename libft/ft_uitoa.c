@@ -6,7 +6,7 @@
 /*   By: jorsanch <jorsanch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/02 19:47:21 by jorsanch          #+#    #+#             */
-/*   Updated: 2022/11/03 22:20:22 by jorsanch         ###   ########.fr       */
+/*   Updated: 2022/12/06 21:08:46 by jorsanch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ static unsigned int	ft_counter(unsigned int n)
 	return (count);
 }
 
-char	*ft_uitoa(unsigned int n)
+char	*ft_uitoa(unsigned long int n)
 {
 	unsigned int		count;
 	char	*str;

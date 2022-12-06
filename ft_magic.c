@@ -6,38 +6,35 @@
 /*   By: jorsanch <jorsanch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/02 13:12:41 by jorsanch          #+#    #+#             */
-/*   Updated: 2022/12/06 20:52:46 by jorsanch         ###   ########.fr       */
+/*   Updated: 2022/12/06 21:21:34 by jorsanch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int ft_magic_string(char **txt, char *arg)
+int	ft_magic_string(char **txt, char *arg)
 {
-	int i = 0;
+	int	i;
 
 	i = ft_findendchar(*txt);
 	*txt = *txt + i + 1;
 	if (arg == NULL)
 	{
-		ft_putstr_fd("(null)",1);
+		ft_putstr_fd("(null)", 1);
 		return (6);
 	}
-	ft_putstr_fd(arg, 1);	
+	ft_putstr_fd(arg, 1);
 	i = ft_strlen(arg);
-
 	return (i);
 }
 
-int ft_magic_signed(char **txt, int arg)
+int	ft_magic_signed(char **txt, int arg)
 {
-
-	char *str;
-	int i = 0;
+	char	*str;
+	int		i;
 
 	i = ft_findendchar(*txt);
 	*txt = *txt + i + 1;
-
 	str = ft_itoa(arg);
 	ft_putstr_fd(str, 1);
 	i = ft_strlen(str);
@@ -45,9 +42,8 @@ int ft_magic_signed(char **txt, int arg)
 	return (i);
 }
 
-int ft_magic_unsigned(char **txt, unsigned long arg)
+int	ft_magic_unsigned(char **txt, unsigned long arg)
 {
-
 	char *str = NULL;
 	int i = 0;
 
@@ -67,36 +63,51 @@ int ft_magic_unsigned(char **txt, unsigned long arg)
 	if (**txt == 'u') 				//unsigned
 	{
 		str = ft_uitoa(arg);
-		ft_putstr_fd(str, 1);	
+		ft_putstr_fd(str, 1);
+		*txt = *txt + i;		
 		i = ft_strlen(str);	
-		*txt = *txt + i;	
+
 		free(str);		
 		return (i);
 	}
+
+
+
 	if (**txt == 'p') 				//Pointer
 	{
 		write(1,"0x",2);
 		i = ft_putnbrbase(arg,"0123456789abcdef");
-									//			printf(YELLOW"putnbrbase return -> %i"RESET, i);
 		*txt = *txt + 1;					
 		return (i+2);
 	}
+
+
+
 	if (**txt == 'x') 				//hexa
 	{
 		i = ft_putnbrbase(arg,"0123456789abcdef");
-									//		 	printf(YELLOW"putnbrbase return -> %i"RESET, i);
 		*txt = *txt + 1;					
 		return (i);
 	}
+
+
+
 	if (**txt == 'X') 				//HEXA
 	{
 		i = ft_putnbrbase(arg,"0123456789ABCDEF");
-									//			printf(YELLOW"putnbrbase return -> %i"RESET, i);
 		*txt = *txt + 1;					
 		return (i);
 	}
 	return 0;
 }
+
+
+
+
+
+
+
+
 
 int ft_magicselec(char **txt, va_list ap)
 {
@@ -115,16 +126,16 @@ int ft_magicselec(char **txt, va_list ap)
 		cont = ft_magic_unsigned(txt, va_arg(ap, unsigned int));
 	else
 	if (*(*txt + i) == 'u')												//5: u
-		cont = ft_magic_unsigned(txt, va_arg(ap, unsigned int));
+		cont = ft_magic_unsigned(txt, va_arg(ap, unsigned int));				//OJO al long
 	else
 	if (*(*txt + i) == 'p')												//6: p
-		cont = ft_magic_unsigned(txt, va_arg(ap, unsigned int));
+		cont = ft_magic_unsigned(txt, va_arg(ap, unsigned long int));
 	else
 	if (*(*txt + i) == 'x')												//7: x
-		cont = ft_magic_unsigned(txt, va_arg(ap, unsigned int));
+		cont = ft_magic_unsigned(txt, va_arg(ap, unsigned int));				//OJO al long
 	else
 	if (*(*txt + i) == 'X')												//8: X
-		cont = ft_magic_unsigned(txt, va_arg(ap, unsigned int));
+		cont = ft_magic_unsigned(txt, va_arg(ap, unsigned int));				//OJO al long
 	else
 	if (*(*txt + i) == '%')												//42: %
 	{
