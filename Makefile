@@ -6,7 +6,7 @@
 #    By: jorsanch <jorsanch@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/30 18:15:47 by jorsanch          #+#    #+#              #
-#    Updated: 2022/12/06 19:43:29 by jorsanch         ###   ########.fr        #
+#    Updated: 2022/12/06 20:56:03 by jorsanch         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -46,3 +46,8 @@ main:
 	@./a.out
 	@make clean
 
+push:
+	git add .
+	git status
+	git commit -m "Last Commit"
+	git push
