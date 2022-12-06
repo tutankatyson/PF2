@@ -6,7 +6,7 @@
 /*   By: jorsanch <jorsanch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/02 20:40:59 by jorsanch          #+#    #+#             */
-/*   Updated: 2022/11/03 22:21:56 by jorsanch         ###   ########.fr       */
+/*   Updated: 2022/12/05 16:23:21 by jorsanch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,12 +70,13 @@ int	ft_putnbrbase(unsigned long int n, char *base)
 		ft_do_all(n, base);
 	if (ft_check_args(n, base) == 2)
 		write(1, base, 1);
-	
 	div = ft_strlen(base);
 	while (n / div > 0)
 	{
 		cont++;
 		n = n / div;
 	}
-	return (cont-1);
+
+
+	return (cont+1);
 }

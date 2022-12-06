@@ -6,7 +6,7 @@
 /*   By: jorsanch <jorsanch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/02 13:18:48 by jorsanch          #+#    #+#             */
-/*   Updated: 2022/11/03 22:45:03 by jorsanch         ###   ########.fr       */
+/*   Updated: 2022/12/05 16:26:28 by jorsanch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,16 @@
 #include <unistd.h>
 #include <stdarg.h>
 #include <stdlib.h>
-#include "libft.h"
+#include "libft/libft.h"
 
-
+#define RED     "\x1b[31m"
+#define GREEN   "\x1b[32m"
+#define YELLOW  "\x1b[33m"
+#define BLUE    "\x1b[34m"
+#define MAGENTA "\x1b[35m"
+#define CYAN    "\x1b[36m"
+#define RESET   "\x1b[0m"
+ 
 
 /** * * * * * * * * *    p r i n t f . c   * * * * * * * * * **/
 
@@ -28,7 +35,7 @@ int		ft_printf(char const *txt, ...);
 
 /** * * * * * * * * *    m a g i c . c    * * * * * * * * * **/
 
-int 	ft_magicselec(char **txt, ap);
+int 	ft_magicselec(char **txt, va_list ap);
 int		ft_magic_string(char **txt, char *arg);
 int		ft_magic_signed(char **txt, int arg);
 int		ft_magic_unsigned(char **txt, unsigned long arg);

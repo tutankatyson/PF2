@@ -6,7 +6,7 @@
 /*   By: jorsanch <jorsanch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/02 14:30:57 by jorsanch          #+#    #+#             */
-/*   Updated: 2022/11/03 22:57:34 by jorsanch         ###   ########.fr       */
+/*   Updated: 2022/12/05 16:10:09 by jorsanch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,6 +90,8 @@ int ft_findendchar(char *txt)
 	}
 	return 0;
 }
+
+
 
 int	ft_go_writing(char **txt)
 {

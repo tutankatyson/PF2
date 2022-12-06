@@ -6,7 +6,7 @@
 #    By: jorsanch <jorsanch@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/30 18:15:47 by jorsanch          #+#    #+#              #
-#    Updated: 2022/11/03 13:30:27 by jorsanch         ###   ########.fr        #
+#    Updated: 2022/12/06 19:43:29 by jorsanch         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,16 +23,26 @@ SRC = ft_atoi.c ft_bzero.c ft_calloc.c ft_isalnum.c ft_isalpha.c \
 
 FLAGS = -Wall -Werror -Wextra
 
-all: $(NAME) clean
+all: $(NAME)
 
-$(NAME): clean
-	gcc -c $(FLAGS) $(SRC)
-	ar -crs $(NAME) *.o		
+
+$(NAME): 
+	gcc -c $(FLAGS) *.c ./libft/*.c
+	ar -crs $(NAME) *.o
+
 
 clean:
-	rm -f *.o
+	@ rm -f *.o
 
 fclean: clean
 	rm -f $(NAME)
 
 re: fclean all
+
+
+main:
+	gcc  $(FLAGS) *.c ./libft/*.c
+	@echo - - - - - TEST PROGRAM: - - - - -
+	@./a.out
+	@make clean
+

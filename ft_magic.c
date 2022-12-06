@@ -6,7 +6,7 @@
 /*   By: jorsanch <jorsanch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/02 13:12:41 by jorsanch          #+#    #+#             */
-/*   Updated: 2022/11/03 23:13:41 by jorsanch         ###   ########.fr       */
+/*   Updated: 2022/12/06 20:52:46 by jorsanch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,13 +53,18 @@ int ft_magic_unsigned(char **txt, unsigned long arg)
 
 	i = ft_findendchar(*txt);
 	*txt = *txt + i;
-	if (ft_arg_type(**txt) == 4) 				//char
+
+
+	if (**txt == 'c') 				//char
 	{
 		ft_putchar_fd(arg,1);
-		*txt = *txt + 1;
+		*txt = *txt + 1;			//			printf(GREEN "\ntxt:%s"RESET, *txt);	
 		return (1);
 	}
-	if (ft_arg_type(**txt) == 5) 				//unsigned
+
+
+
+	if (**txt == 'u') 				//unsigned
 	{
 		str = ft_uitoa(arg);
 		ft_putstr_fd(str, 1);	
@@ -68,22 +73,25 @@ int ft_magic_unsigned(char **txt, unsigned long arg)
 		free(str);		
 		return (i);
 	}
-	if (ft_arg_type(**txt) == 6) 				//Pointer
+	if (**txt == 'p') 				//Pointer
 	{
-		write(1,"0x10",4);
+		write(1,"0x",2);
 		i = ft_putnbrbase(arg,"0123456789abcdef");
+									//			printf(YELLOW"putnbrbase return -> %i"RESET, i);
 		*txt = *txt + 1;					
-		return (i+4);
+		return (i+2);
 	}
-	if (ft_arg_type(**txt) == 7) 				//hexa
+	if (**txt == 'x') 				//hexa
 	{
 		i = ft_putnbrbase(arg,"0123456789abcdef");
+									//		 	printf(YELLOW"putnbrbase return -> %i"RESET, i);
 		*txt = *txt + 1;					
 		return (i);
 	}
-	if (ft_arg_type(**txt) == 8) 				//HEXA
+	if (**txt == 'X') 				//HEXA
 	{
 		i = ft_putnbrbase(arg,"0123456789ABCDEF");
+									//			printf(YELLOW"putnbrbase return -> %i"RESET, i);
 		*txt = *txt + 1;					
 		return (i);
 	}
@@ -93,29 +101,41 @@ int ft_magic_unsigned(char **txt, unsigned long arg)
 int ft_magicselec(char **txt, va_list ap)
 {
 	int cont = 0;
-	char ch;
+	int i = 0;
+									//			printf(GREEN "\n------ MAGIC SELEC ------"RESET);
+	i = ft_findendchar(*txt);		//			printf(GREEN "\nENDCHAR: %c"RESET, *(*txt + i));					
 
-	ch = *txt[ft_findendchar(*txt)];
-
-	if (ch == 's')
+	if (*(*txt + i) == 's')
 		cont = ft_magic_string(txt, va_arg(ap, char *));
-	if (ch == 'd' || ch == 'i')
+	else
+	if (*(*txt + i) == 'd' || *(*txt + i) == 'i')
 		cont = ft_magic_signed(txt, va_arg(ap, int));
-	if (ch == 'c')												
-		cont = ft_magic_char(txt, va_arg(ap, unsigned int));
+	else
+	if (*(*txt + i) == 'c')												
+		cont = ft_magic_unsigned(txt, va_arg(ap, unsigned int));
+	else
+	if (*(*txt + i) == 'u')												//5: u
+		cont = ft_magic_unsigned(txt, va_arg(ap, unsigned int));
+	else
+	if (*(*txt + i) == 'p')												//6: p
+		cont = ft_magic_unsigned(txt, va_arg(ap, unsigned int));
+	else
+	if (*(*txt + i) == 'x')												//7: x
+		cont = ft_magic_unsigned(txt, va_arg(ap, unsigned int));
+	else
+	if (*(*txt + i) == 'X')												//8: X
+		cont = ft_magic_unsigned(txt, va_arg(ap, unsigned int));
+	else
+	if (*(*txt + i) == '%')												//42: %
+	{
+										//		printf(GREEN "\n---------IF--------"RESET);
+		ft_putchar_fd('%',1);
+		cont++;
+		*txt = *txt + i + 1;
+	}
 
 
 
-	if (ch == '%')												//42: %
-		return (42);
-	if (ch == 'u')												//5: u
-		return (5);
-	if (ch == 'p')												//6: p
-		return (6);
-	if (ch == 'x')												//7: x
-		return (7);
-	if (ch == 'X')												//8: X
-		
 	return (cont);
 
 }
