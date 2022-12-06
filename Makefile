@@ -6,7 +6,7 @@
 #    By: jorsanch <jorsanch@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/30 18:15:47 by jorsanch          #+#    #+#              #
-#    Updated: 2022/12/06 21:01:09 by jorsanch         ###   ########.fr        #
+#    Updated: 2022/12/07 00:02:36 by jorsanch         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,9 @@ SRC = ft_atoi.c ft_bzero.c ft_calloc.c ft_isalnum.c ft_isalpha.c \
 	  ft_strdup.c ft_striteri.c ft_strjoin.c ft_strlcat.c ft_strlcpy.c \
 	  ft_strlen.c ft_strmapi.c ft_strncmp.c ft_strnstr.c ft_strrchr.c \
 	  ft_strtrim.c ft_substr.c ft_tolower.c ft_toupper.c ft_putnbrbase.c \
-	  ft_uitoa.c ft_flags.c ft_magic.c ft_printf.c ft_printtools.c
+	  ft_uitoa.c
+
+PRINT_SRC = ft_magic.c ft_magic2.c ft_printf.c ft_printtools.c
 
 FLAGS = -Wall -Werror -Wextra
 
@@ -27,7 +29,7 @@ all: $(NAME)
 
 
 $(NAME): 
-	gcc -c $(FLAGS) *.c ./libft/*.c
+	gcc -c $(FLAGS) $(PRINT_SRC) ./libft/*.c
 	ar -crs $(NAME) *.o
 
 
@@ -52,3 +54,6 @@ push:
 	git status
 	git commit -m "Last Commit"
 	git push
+
+norm:
+	norminette $(PRINT_SRC)

@@ -6,7 +6,7 @@
 /*   By: jorsanch <jorsanch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/02 19:47:21 by jorsanch          #+#    #+#             */
-/*   Updated: 2022/12/06 21:08:46 by jorsanch         ###   ########.fr       */
+/*   Updated: 2022/12/07 00:00:21 by jorsanch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 static char	*ft_strtab(char *str)
 {
-	char	temp;
-	unsigned int		len;
-	unsigned int		i;
+	char			temp;
+	unsigned int	len;
+	unsigned int	i;
 
 	i = 0;
 	len = ft_strlen(str) - 1;
@@ -53,11 +53,11 @@ static unsigned int	ft_counter(unsigned int n)
 char	*ft_uitoa(unsigned long int n)
 {
 	unsigned int		count;
-	char	*str;
+	char				*str;
 	unsigned int		i;
 
-	if(n == 0)
-		return(ft_strdup("0"));
+	if (n == 0)
+		return (ft_strdup("0"));
 	count = ft_counter(n);
 	str = (char *)malloc((count + 1) * sizeof(char));
 	if (!str)

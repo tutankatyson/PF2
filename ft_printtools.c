@@ -6,42 +6,11 @@
 /*   By: jorsanch <jorsanch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/02 14:30:57 by jorsanch          #+#    #+#             */
-/*   Updated: 2022/12/05 16:10:09 by jorsanch         ###   ########.fr       */
+/*   Updated: 2022/12/06 23:56:41 by jorsanch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-
-void printbuff(char *str, char *name)
-{
-	size_t i = 0;
-	char c = '\n';
-	char *c3 = "$\\n$";
-	char c2 = '|';
-
-	write(1,&c,1);
-	while (name[i] != '\0')
-	{
-		write(1,&name[i],1);
-		i++;
-	}
-	write(1,":",1);
-
-	write(1,&c2,1);
-	i = 0;
-	while(str[i] != '\0')
-	{
-		if(str[i] == c)
-		{
-			write(1,c3,4);
-		}
-		else
-			write(1,&str[i],1);
-		write(1,&c2,1);
-		i++;
-	}
-	write(1,"$\\0$|",5);
-}
 
 /*Cuenta la de veces que hay que llamar a magic*/
 
@@ -76,9 +45,11 @@ int	ft_checkendchar(char c)
 	return (0);
 }
 
-int ft_findendchar(char *txt)
+int	ft_findendchar(char *txt)
 {
-	int i = 0;
+	int	i;
+
+	i = 0;
 	if (txt[i] != 0)
 	{
 		i++;
@@ -86,16 +57,14 @@ int ft_findendchar(char *txt)
 		{
 			i++;
 		}
-		return(i);
+		return (i);
 	}
-	return 0;
+	return (0);
 }
-
-
 
 int	ft_go_writing(char **txt)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (**txt != '%' && **txt != '\0')
@@ -104,5 +73,5 @@ int	ft_go_writing(char **txt)
 		*txt = *txt + 1;
 		i++;
 	}
-	return (i);								
+	return (i);
 }
