@@ -6,13 +6,13 @@
 /*   By: jorsanch <jorsanch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/02 14:30:57 by jorsanch          #+#    #+#             */
-/*   Updated: 2022/12/06 23:56:41 by jorsanch         ###   ########.fr       */
+/*   Updated: 2022/12/07 00:40:05 by jorsanch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-/*Cuenta la de veces que hay que llamar a magic*/
+/* Cuenta la de veces que hay que llamar a magic */
 
 int	ft_spellcounter(char *str)
 {

@@ -6,7 +6,7 @@
 #    By: jorsanch <jorsanch@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/30 18:15:47 by jorsanch          #+#    #+#              #
-#    Updated: 2022/12/07 00:02:36 by jorsanch         ###   ########.fr        #
+#    Updated: 2022/12/07 00:45:22 by jorsanch         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -43,7 +43,7 @@ re: fclean all
 
 # Esta regla compila todos los archivos .c, incluido main.c, y ejecuta el programa creado
 main:
-	gcc  $(FLAGS) *.c ./libft/*.c
+	gcc  $(FLAGS) $(PRINT_SRC) main.c ./libft/*.c
 	@echo - - - - - TEST PROGRAM: - - - - -
 	@./a.out
 	@make clean
