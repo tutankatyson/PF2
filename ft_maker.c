@@ -22,6 +22,7 @@ char	*ft_makestr(int fill, int precision, int aling, char *str)
 		txt = ft_substr(str, 0, precision);
 
 
+
 	
 
 
