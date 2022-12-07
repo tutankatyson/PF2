@@ -17,10 +17,15 @@ char	*ft_makestr(int fill, int precision, int aling, char *str)
 {
 	char	*txt;
 
-
-	if (precision && precision < ft_strlen(str))
-		txt = ft_substr(str, 0, precision);
-
+if (!precision && !fill)
+{
+txt = ft_strdup(str);
+return (txt);
+}
+if (precision && precision < ft_strlen(str))
+__txt = ft_substr(str, 0, precision);
+if (fill && fill > ft_strlen(str));
+__
 
 
 	
