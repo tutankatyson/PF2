@@ -6,7 +6,7 @@
 #    By: jorsanch <jorsanch@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/30 18:15:47 by jorsanch          #+#    #+#              #
-#    Updated: 2022/12/07 00:45:22 by jorsanch         ###   ########.fr        #
+#    Updated: 2022/12/07 16:22:00 by jorsanch         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,6 +23,8 @@ SRC = ft_atoi.c ft_bzero.c ft_calloc.c ft_isalnum.c ft_isalpha.c \
 
 PRINT_SRC = ft_magic.c ft_magic2.c ft_printf.c ft_printtools.c
 
+BONUS_SRC = ft_magic_bonus.c ft_flags.c ft_maker.c
+
 FLAGS = -Wall -Werror -Wextra
 
 all: $(NAME)
@@ -32,6 +34,9 @@ $(NAME):
 	gcc -c $(FLAGS) $(PRINT_SRC) ./libft/*.c
 	ar -crs $(NAME) *.o
 
+bonus: 
+	gcc -c $(FLAGS) $(PRINT_SRC) $(BONUS_SRC) ./libft/*.c
+	ar -crs $(NAME) *.o
 
 clean:
 	@ rm -f *.o
@@ -43,7 +48,8 @@ re: fclean all
 
 # Esta regla compila todos los archivos .c, incluido main.c, y ejecuta el programa creado
 main:
-	gcc  $(FLAGS) $(PRINT_SRC) main.c ./libft/*.c
+	clear
+	gcc  $(FLAGS) $(PRINT_SRC) $(BONUS_SRC) main.c ./libft/*.c
 	@echo - - - - - TEST PROGRAM: - - - - -
 	@./a.out
 	@make clean
@@ -52,7 +58,7 @@ main:
 push:
 	git add .
 	git status
-	git commit -m "Last Commit"
+	git commit -m "Last Commit Bonus"
 	git push
 
 norm:

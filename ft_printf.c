@@ -6,11 +6,12 @@
 /*   By: jorsanch <jorsanch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 22:48:17 by jorsanch          #+#    #+#             */
-/*   Updated: 2022/12/06 23:13:30 by jorsanch         ###   ########.fr       */
+/*   Updated: 2022/12/07 16:11:35 by jorsanch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+#include "ft_printf_bonus.h"
 
 int	ft_printf(char const *txt, ...)
 {
@@ -32,7 +33,7 @@ int	ft_printf(char const *txt, ...)
 		while (spells-- > 0)
 		{
 			cont = cont + ft_go_writing(&txt1);
-			cont = cont + ft_magicselec(&txt1, ap);
+			cont = cont + ft_blackmagicselec(&txt1, ap);
 		}
 		va_end(ap);
 	}

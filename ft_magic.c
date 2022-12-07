@@ -6,7 +6,7 @@
 /*   By: jorsanch <jorsanch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/02 13:12:41 by jorsanch          #+#    #+#             */
-/*   Updated: 2022/12/07 00:39:53 by jorsanch         ###   ########.fr       */
+/*   Updated: 2022/12/07 16:07:45 by jorsanch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ int	ft_magicselec(char **txt, va_list ap)
 int	ft_magic_string(char **txt, char *arg)
 {
 	int	i;
-	
+
 	i = ft_findendchar(*txt);
 	*txt = *txt + i + 1;
 	if (arg == NULL)

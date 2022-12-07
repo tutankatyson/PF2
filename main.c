@@ -1,6 +1,6 @@
 
 
-#include "ft_printf.h"
+#include "ft_printf_bonus.h"
 
 #define RED     "\x1b[31m"
 #define GREEN   "\x1b[32m"
@@ -15,8 +15,8 @@ int main()
 	int i, j;
 	char *ptr = "holas";
 
-	i	=	ft_printf("\n %s", "hola que ase");
-	j	=      printf("\n %10.30s", "hola que ase");
+	i	=	ft_printf("\n %30.3s", NULL);
+	j	=      printf("\n %30.3s", NULL);
 
 	ptr = 0;
 	if(i != j)

@@ -22,18 +22,21 @@ int	ft_blackmagicselec(char **txt, va_list ap)
 	cont = 1;
 	if (*(*txt + i) == 's')
 		cont = ft_blackmagic_string(txt, va_arg(ap, char *));
+
+
+		
 	else if (*(*txt + i) == 'd' || *(*txt + i) == 'i')
 		cont = ft_blackmagic_signed(txt, va_arg(ap, int));
-	else if (*(*txt + i) == 'c')
-		cont = ft_blackmagic_char(txt, va_arg(ap, unsigned int));
+//	else if (*(*txt + i) == 'c')
+//		cont = ft_blackmagic_char(txt, va_arg(ap, unsigned int));
 	else if (*(*txt + i) == 'u')
 		cont = ft_blackmagic_unsigned(txt, va_arg(ap, unsigned int));
 	else if (*(*txt + i) == 'p')
 		cont = ft_blackmagic_pointer(txt, va_arg(ap, unsigned long int));
-	else if (*(*txt + i) == 'x')
-		cont = ft_blackmagic_hexa(txt, va_arg(ap, unsigned int));
-	else if (*(*txt + i) == 'X')
-		cont = ft_blackmagic_hexa(txt, va_arg(ap, unsigned int));
+//	else if (*(*txt + i) == 'x')
+//		cont = ft_blackmagic_hexa(txt, va_arg(ap, unsigned int));
+//	else if (*(*txt + i) == 'X')
+//		cont = ft_blackmagic_hexa(txt, va_arg(ap, unsigned int));
 	else if (*(*txt + i) == '%')
 	{
 		ft_putchar_fd('%', 1);
@@ -46,34 +49,39 @@ int	ft_blackmagic_string(char **txt, char *arg)
 {
 	int		i;
 	char	*ins;
+	char	*str;
 
+	if (arg == NULL)
+		arg = "(null)";
 	i = ft_findendchar(*txt);
-	ins = ft_substr(*txt, 0, i);								printf("\nINS:%s",ins);
-	ins = ft_makestr(ft_fill(ins), ft_precision(ins), ft_alignment(ins), arg);
+	ins = ft_substr(*txt, 0, i);							//	printf(YELLOW"\nINS:%s"RESET,ins);
+	str = ft_makestr(ft_fill(ins), ft_precision(ins), ft_alignment(ins), arg);
 
 	*txt = *txt + i + 1;
-	if (arg == NULL)
-	{
-		ft_putstr_fd("(null)", 1);
-		return (6);
-	}
-	ft_putstr_fd(ins, 1);
-	i = ft_strlen(ins);
+	ft_putstr_fd(str, 1);
+	i = ft_strlen(str);
+	free(str);
 	free(ins);
 	return (i);
 }
 
 int	ft_blackmagic_signed(char **txt, int arg)
 {
-	char	*str;
 	int		i;
+	char	*ins;
+	char	*str;
 
 	i = ft_findendchar(*txt);
-	*txt = *txt + i + 1;
+	ins = ft_substr(*txt, 0, i);							//	printf(YELLOW"\nINS:%s"RESET,ins);
 	str = ft_itoa(arg);
+	free(str);
+	str = ft_makestr(ft_fill(ins), ft_precision(ins), ft_alignment(ins), str);
+
+	*txt = *txt + i + 1;
 	ft_putstr_fd(str, 1);
 	i = ft_strlen(str);
 	free(str);
+	free(ins);
 	return (i);
 }
 
